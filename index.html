@@ -6,8 +6,40 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
     <script src="app.js"></script>
   </head>
-  <body>
+  <body ng-controller="StoreController as store">
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="product in store.products | orderBy:'+price' ">
+            <h3>
+                {{ product.name }}
+                <em class="pull-right">{{ product.price | currency}}</em>
+            </h3>
+            <img ng-src="{{ product.images[0].thumb }}" alt="image">
+            <ul class="nav nav-pills" ng-init="tab = 1">
+                <li ng-class="{ active:tab === 1 }">
+                    <a href ng-click="tab = 1">Description</a>
+                </li>
+                <li ng-class="{ active:tab === 2 }">
+                    <a href ng-click="tab = 2">Specification</a>
+                </li>
+                <li ng-class="{ active:tab === 3 }">
+                    <a href ng-click="tab = 3">Reviews</a>
+                </li>
+            </ul>
+            <div class="panel" ng-show="tab === 1">
+                <h4>Description</h4>
+                <p>{{ product.description }}</p>
+            </div>
+            <div class="panel" ng-show="tab === 2">
+                <h4>Specification</h4>
+                <p>None yet</p>
+            </div>
+            <div class="panel" ng-show="tab === 3">
+                <h4>Reviews</h4>
+                <p>None one </p>
+            </div>
 
-    I am {{ 4 + 6 }}
+            <button ng-hide="product.soldOut"> Add to cart</button>
+        </li>
+    </ul>
   </body>
 </html>
