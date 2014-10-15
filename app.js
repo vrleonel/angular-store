@@ -13,6 +13,18 @@
                 thumb: 'static/img/city-thumb-1.jpeg',
             }
         ],
+        reviews: [
+            {
+                stars: 5,
+                body: "Ótimo produto",
+                author: "vitor@leonel.com",
+            },
+            {
+                stars: 1,
+                body: "Que merda",
+                author: "leonel@vitor.com",
+            },
+        ]
     },
     {
         name: 'Pentagon Gem',

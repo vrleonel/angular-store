@@ -1,12 +1,12 @@
 <!doctype html>
 <html ng-app="store">
-  <head>
+<head>
     <title>My Angular App</title>
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
     <script src="app.js"></script>
-  </head>
-  <body ng-controller="StoreController as store">
+</head>
+<body ng-controller="StoreController as store">
     <ul class="list-group">
         <li class="list-group-item" ng-repeat="product in store.products | orderBy:'+price' ">
             <h3>
@@ -36,15 +36,41 @@
                     <p>None yet</p>
                 </div>
                 <div class="panel" ng-show="panel.isSelected(3)">
-                    <h4>Reviews</h4>
-                    <p>None one </p>
+                    <blockquote ng-repeat="review in product.reviews">
+                        <b>stars {{ review.stars }}</b>
+                        <p>{{ review.body }}</p>
+                        <cite>by: {{ review.author }}</cite>
+                    </blockquote>
+
+                    <form id="reviewForm" name="reviewForm" action="index.html" method="post" class="input-group">
+                        <p>
+                            <select id="" name="">
+                                <option value="1">1 star</option>
+                                <option value="2">2 star</option>
+                                <option value="3">3 star</option>
+                                <option value="4">4 star</option>
+                                <option value="5">5 star</option>
+                            </select>
+                        </p>
+                        <p>
+                            <textarea></textarea>
+                        </p>
+                        <p>
+                            <label for="">By: </label>
+                            <input type="email" />
+                        </p>
+                        <p>
+                            <input type="submit" value="Submit" class="btn btn-default" />
+                        </p>
+                    </form>
                 </div>
 
             </section>
 
 
+
             <button ng-hide="product.soldOut"> Add to cart</button>
         </li>
     </ul>
-  </body>
+</body>
 </html>
