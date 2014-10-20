@@ -36,32 +36,46 @@
                     <p>None yet</p>
                 </div>
                 <div class="panel" ng-show="panel.isSelected(3)">
+                    <h4>Reviews</h4>
                     <blockquote ng-repeat="review in product.reviews">
                         <b>stars {{ review.stars }}</b>
                         <p>{{ review.body }}</p>
-                        <cite>by: {{ review.author }}</cite>
+                        <cite>- {{ review.author }}</cite>
                     </blockquote>
 
-                    <form id="reviewForm" name="reviewForm" action="index.html" method="post" class="input-group">
-                        <p>
-                            <select id="" name="">
+                    <form id="reviewForm" name="reviewForm" action="">
+                        <blockquote >
+                            <b>Stars {{ review.stars }}</b>
+                            <p>{{ review.body }}</p>
+                            <cite>- {{ review.author }}</cite>
+                        </blockquote>
+
+                        <fieldset class="form-group">
+                            <select id="sltRate" name="sltRate" ng-model="review.stars">
                                 <option value="1">1 star</option>
                                 <option value="2">2 star</option>
                                 <option value="3">3 star</option>
                                 <option value="4">4 star</option>
                                 <option value="5">5 star</option>
                             </select>
-                        </p>
-                        <p>
-                            <textarea></textarea>
-                        </p>
-                        <p>
-                            <label for="">By: </label>
-                            <input type="email" />
-                        </p>
-                        <p>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <textarea ng-model="review.body"></textarea>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <input type="email" ng-model="review.author" placeholder="exemple@mail.com" />
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <input ng-model="review.color" type="radio" value="red"> Red
+                            <input ng-model="review.color" type="radio" value="blue"> Blue
+                            <input ng-model="review.color" type="radio" value="Green"> Green
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <input ng-model="review.terms" type="checkbox"> I agree with terms
+                        </fieldset>
+                        <fieldset class="form-group">
                             <input type="submit" value="Submit" class="btn btn-default" />
-                        </p>
+                        </fieldset>
                     </form>
                 </div>
 
